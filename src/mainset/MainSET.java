@@ -40,12 +40,10 @@ public class MainSET {
         
         boolean ingreso_nombre=true;
         while (ingreso_nombre)
-        {
-            
-        
+        {       
             boolean ingreso=true;
 
-            System.out.println("1. Ingrese el nombre:");
+            System.out.println("1. Ingrese el nombre");
             System.out.println("2. salir");
             System.out.print("Ingrese opcion: ");
             int opcion2= teclado.nextInt();
@@ -59,7 +57,7 @@ public class MainSET {
                 {          
 
 
-                    System.out.println("Ingrese conjunto:");
+                    System.out.println("Ingrese conjunto");
                     System.out.println("1. Desarrollador Java");
                     System.out.println("2. Desarrolador Web");
                     System.out.println("3. Desarrollador Celulares");
@@ -85,12 +83,12 @@ public class MainSET {
                         ingreso=false;
                     }
 
+                }
             }
             if (opcion2==2)
             {
                 ingreso_nombre=false;
                 ingreso=false;
-            }
             }
         }
     }
