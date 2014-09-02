@@ -50,7 +50,7 @@ public class MainSET {
             
             if (opcion2==1)
             {
-            
+                System.out.print("Ingrese nombre: ");
                 String nombre= teclado.next();
             
                 while(ingreso)
