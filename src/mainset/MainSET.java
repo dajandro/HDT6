@@ -6,6 +6,7 @@
 
 package mainset;
 
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -54,14 +55,12 @@ public class MainSET {
                 String nombre= teclado.next();
             
                 while(ingreso)
-                {          
-
-
-                    System.out.println("Ingrese conjunto");
+                {                       
                     System.out.println("1. Desarrollador Java");
                     System.out.println("2. Desarrolador Web");
                     System.out.println("3. Desarrollador Celulares");
                     System.out.println("4. Finalizar");
+                    System.out.print("Ingrese opcion: ");
                     int opcion = teclado.nextInt();
 
                     if (opcion==1)
@@ -91,6 +90,23 @@ public class MainSET {
                 ingreso=false;
             }
         }
+        
+        // opciones
+        // 1. Intersección de los 3 conjuntos
+        /*Set dJava;
+        Set dWeb;
+        Set dCel;*/
+        
+        Iterator iteratorJ = dJava.iterator();
+        Iterator iteratorW = dWeb.iterator();
+        Iterator iteratorC = dCel.iterator();
+        
+        Set todos = dJava;
+        todos.retainAll(dWeb);
+        todos.retainAll(dCel);
+        System.out.println(todos.toString());
+        
+        // 2. Java pero no Web
     }
 
 }
