@@ -9,6 +9,7 @@ package mainset;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,14 +22,18 @@ public class MainSET {
      */
     public static void main(String[] args) {
         Scanner teclado  = new Scanner(System.in);
-        
-        
-        System.out.println("1. Hash Set");
-        System.out.println("2. Tree Set");
-        System.out.println("3. Linked Hash Set");
-        System.out.print("Ingrese opcion:");
-        int tipo_set = teclado.nextInt();
-        
+     
+        int tipo_set = JOptionPane.showOptionDialog(
+                                        null ,
+                                        "Seleccione opcion", 
+                                        "Selector de opciones",
+                                        JOptionPane.YES_NO_CANCEL_OPTION,
+                                        JOptionPane.QUESTION_MESSAGE,
+                                        null,    // null para icono por defecto.
+                                        new Object[] { "1. HashSet", "2. TreeSet", "3. Linked Hash Set" },   // null para YES, NO y CANCEL
+                                        "1. HashSet");
+       
+        tipo_set+=1;
         FactorySET factory = new FactorySET();
         Set dJava, dWeb, dCel;
         //se crean los conjuntos a utilizar
@@ -41,43 +46,52 @@ public class MainSET {
         {       
             boolean ingreso=true;
 
-            System.out.println("1. Ingrese el nombre");
-            System.out.println("2. salir");
-            System.out.print("Ingrese opcion: ");
-            int opcion2= teclado.nextInt();
-            System.out.println("");
-            
+            int opcion2 = JOptionPane.showOptionDialog(
+                                        null ,
+                                        "Seleccione opcion", 
+                                        "Selector de opciones",
+                                        JOptionPane.YES_NO_CANCEL_OPTION,
+                                        JOptionPane.QUESTION_MESSAGE,
+                                        null,    // null para icono por defecto.
+                                        new Object[] { "ingresar nombre "," salir"  },   // null para YES, NO y CANCEL
+                                        "");
+            opcion2+=1;
             if (opcion2==1)
             {
-                System.out.print("Ingrese nombre: ");
-                String nombre= teclado.next();
-                System.out.println("");
+                String nombre = JOptionPane.showInputDialog(
+                                null,
+                                "Ingrese nombre",
+                                JOptionPane.QUESTION_MESSAGE);  // el icono sera un iterrogante
             
                 while(ingreso)
                 {                       
-                    System.out.println("1. Desarrollador Java");
-                    System.out.println("2. Desarrolador Web");
-                    System.out.println("3. Desarrollador Celulares");
-                    System.out.println("4. Finalizar");
-                    System.out.print("Ingrese conjunto: ");
-                    int opcion = teclado.nextInt();
-
-                    if (opcion==1)
+                    int opcion_conjunto=JOptionPane.showOptionDialog(
+                                        null ,
+                                        "Seleccione opcion para " + nombre, 
+                                        "Selector de opciones",
+                                        JOptionPane.YES_NO_CANCEL_OPTION,
+                                        JOptionPane.QUESTION_MESSAGE,
+                                        null,    // null para icono por defecto.
+                                        new Object[] {"1 Desarrolador Java", "2. Desarrollador Web",
+                                        "3.Desarrollador Celular", "4. salir"},   // null para YES, NO y CANCEL
+                                        "1");
+                    opcion_conjunto+=1;
+                    if (opcion_conjunto==1)
                     {
                         dJava.add(nombre);
                     }
 
-                    if (opcion==2)
+                    if (opcion_conjunto==2)
                     {
                         dWeb.add(nombre);
                        
                     }
-                    if (opcion==3)
+                    if (opcion_conjunto==3)
                     {
                         dCel.add(nombre);
                     }
 
-                    if (opcion==4)
+                    if (opcion_conjunto==4)
                     {
                         ingreso=false;
                     }
