@@ -157,10 +157,10 @@ public class MainSET {
        
         
        //5. conjunto java es subconjunto de web
-        if (dJava.contains(dWeb))
+        if (dJava.containsAll(dWeb))
             System.out.println("Desarrollador java SI es subconjunto de desarrollador web");
        
-        if (dJava.contains(dWeb)==false)
+        if (dJava.containsAll(dWeb)==false)
             System.out.println("Desarrollador java No es subconjunto de desarrollador web");
         
         //6. conjunto más grande
