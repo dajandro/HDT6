@@ -6,7 +6,10 @@
 
 package mainset;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -34,9 +37,12 @@ public class MainSET {
                                         "1. HashSet");
        
         tipo_set+=1;
+        
         FactorySET factory = new FactorySET();
-        Set dJava, dWeb, dCel;
-        //se crean los conjuntos a utilizar
+        
+        Set dJava, dWeb, dCel;//se declaran los conjuntos a utilizar
+        
+        //se instancian los conjuntos a utilizar
         dJava = factory.getSET(tipo_set);
         dWeb = factory.getSET(tipo_set);
         dCel = factory.getSET(tipo_set);
@@ -78,17 +84,17 @@ public class MainSET {
                     opcion_conjunto+=1;
                     if (opcion_conjunto==1)
                     {
-                        dJava.add(nombre);
+                        dJava.add(nombre); //se agrega al conjunto de java
                     }
 
                     if (opcion_conjunto==2)
                     {
-                        dWeb.add(nombre);
+                        dWeb.add(nombre); //se agrega al conjunto web
                        
                     }
                     if (opcion_conjunto==3)
                     {
-                        dCel.add(nombre);
+                        dCel.add(nombre);//se agrega al cojunto de celulares
                     }
 
                     if (opcion_conjunto==4)
@@ -98,7 +104,7 @@ public class MainSET {
 
                 }
             }
-            if (opcion2==2)
+            if (opcion2==2)//opcion salir
             {
                 ingreso_nombre=false;
                 ingreso=false;
@@ -125,7 +131,10 @@ public class MainSET {
         System.out.println("Desarrolladores Java, Celular y Web" + todos.toString());
         
         // 2. Java pero no Web
-        
+        Set JavaNoWeb = factory.getSET(tipo_set); //variable temporal
+        JavaNoWeb.addAll(dJava);
+        JavaNoWeb.removeAll(dWeb);
+        System.out.println("Desarrolladores Java pero no Web   "+JavaNoWeb.toString() );
         
         
         //3. Web y Celulares pero no Java
@@ -150,7 +159,7 @@ public class MainSET {
        //5. conjunto java es subconjunto de web
         if (dJava.contains(dWeb))
             System.out.println("Desarrollador java SI es subconjunto de desarrollador web");
-        
+       
         if (dJava.contains(dWeb)==false)
             System.out.println("Desarrollador java No es subconjunto de desarrollador web");
         
@@ -165,7 +174,8 @@ public class MainSET {
         
         if (dJava.size()>dWeb.size() && dJava.size()>dCel.size())
             conjuntoMayor.addAll(dJava); //si el mayor fue el de Java se agrega a la variable temporal
-        
+        else if (dJava.size()==dWeb.size()&&dJava.size()==dCel.size())
+            System.out.println("Todos los conjuntos tienen el mismo tamaño");
         
         System.out.println("El conjunto mayor es " + conjuntoMayor.toString());
         
@@ -176,22 +186,19 @@ public class MainSET {
         Object[] arregloNoOrdenado=  conjuntoMayor.toArray(); //se pasa a un arreglo tipo objeto
         
         //se mete el arreglo a un arreglo comparable
-        Comparable[] arregloOrdenado = new Comparable[arregloNoOrdenado.length]; 
+        List<String> arregloOrdenado = new ArrayList<>(); 
         for (int i = 0 ; i<arregloNoOrdenado.length;i++)
-            arregloOrdenado[i]=(Comparable) arregloNoOrdenado[i];
+            arregloOrdenado.add((String) arregloNoOrdenado[i]);
         
         //se ordena el nuevo arreglo
-        Sorting.selectionSort(arregloOrdenado);
+        Collections.sort(arregloOrdenado);
         
         //se muestra el nuevo arreglo
-        System.out.println("El conjunto más grande y ordenado es : ");
-        System.out.print("[");
-        for (int j = 0; j<arregloOrdenado.length;j++)
-        {
-            System.out.print(arregloOrdenado[j].toString().concat(", "));
-        }
-        System.out.print("]\n");
+        System.out.print("El conjunto más grande y ordenado es : ");
+      
         
+        System.out.print(arregloOrdenado.toString());
+      
     }
 
 }
