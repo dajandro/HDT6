@@ -59,7 +59,7 @@ public class MainSET {
                                         JOptionPane.YES_NO_CANCEL_OPTION,
                                         JOptionPane.QUESTION_MESSAGE,
                                         null,    // null para icono por defecto.
-                                        new Object[] { "ingresar nombre "," salir"  },   // null para YES, NO y CANCEL
+                                        new Object[] { "Ingresar nombre ","Salir"  },   // null para YES, NO y CANCEL
                                         "");
             opcion2+=1;
             if (opcion2==1)
@@ -116,7 +116,7 @@ public class MainSET {
         /*Set dJava;
         Set dWeb;
         Set dCel;*/
-        System.out.println("conjuntos");
+        System.out.println("Conjuntos");
         System.out.println(dWeb.toString());
         System.out.println(dCel.toString());
         System.out.println(dJava.toString());
@@ -128,13 +128,13 @@ public class MainSET {
         todos.addAll(dJava);
         todos.retainAll(dWeb);
         todos.retainAll(dCel);
-        System.out.println("Desarrolladores Java, Celular y Web" + todos.toString());
+        System.out.println("Desarrolladores Java, Celular y Web " + todos.toString());
         
         // 2. Java pero no Web
         Set JavaNoWeb = factory.getSET(tipo_set); //variable temporal
         JavaNoWeb.addAll(dJava);
         JavaNoWeb.removeAll(dWeb);
-        System.out.println("Desarrolladores Java pero no Web   "+JavaNoWeb.toString() );
+        System.out.println("Desarrolladores Java pero no Web "+JavaNoWeb.toString() );
         
         
         //3. Web y Celulares pero no Java
@@ -165,19 +165,29 @@ public class MainSET {
         
         //6. conjunto más grande
        
+        String mayor = "";
         Set conjuntoMayor = factory.getSET(tipo_set);           //variable temporal
         if (dWeb.size()>dCel.size() &&  dWeb.size()>dJava.size())
+        {
             conjuntoMayor.addAll(dWeb);//si el mayor fue web se agrega este a la variable temporal
+            mayor = "Desarrolladores Web";
+        }
         
         if (dCel.size()>dWeb.size() && dCel.size()>dJava.size())
+        {
             conjuntoMayor.addAll(dCel);//si el mayor fue celular se agrega a la variable temporal
+            mayor = "Desarrolladores de Celulares";
+        }
         
         if (dJava.size()>dWeb.size() && dJava.size()>dCel.size())
+        {
             conjuntoMayor.addAll(dJava); //si el mayor fue el de Java se agrega a la variable temporal
+            mayor = "Desarrolladores Java";
+        }
         else if (dJava.size()==dWeb.size()&&dJava.size()==dCel.size())
             System.out.println("Todos los conjuntos tienen el mismo tamaño");
         
-        System.out.println("El conjunto mayor es " + conjuntoMayor.toString());
+        System.out.println("El conjunto mayor es de " + mayor + " y contiene a " + conjuntoMayor.toString());
         
 
         //7. Ordena el conjunto más grande
@@ -194,7 +204,7 @@ public class MainSET {
         Collections.sort(arregloOrdenado);
         
         //se muestra el nuevo arreglo
-        System.out.print("El conjunto más grande y ordenado es : ");
+        System.out.print("El conjunto más grande es " + mayor + " y ordenado es : ");
       
         
         System.out.print(arregloOrdenado.toString());
